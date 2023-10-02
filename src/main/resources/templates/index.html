@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::.table-container})">
+<head>
+	<meta charset="UTF-8" />
+	<title>List View</title>
+
+	<link rel="stylesheet" th:href="@{/css/tablecss.css}" />
+	<script th:src="@{/js/js1.js}"></script>
+</head>
+<body  onload="loadingAgain()">
+
+	
+<div class="container table-container">
+  
+  <table class="table table-hover mytable">
+    <thead>
+      <tr class="red-bar">
+		  <th>Sr. No.</th>
+        <th>Task</th>
+        <th>Priority</th>
+        <th>Duration</th>
+        <th>Assigne</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+		<tr th:each = "t : ${list}" >
+			<th th:text="${t.id}" ></th>
+	        <th th:text="${t.task}" th:id="${t.id}+ 'task'"></th>
+	        <th th:text="${t.priority}" th:id="${t.id}+ 'priority'"></th>
+	        <th th:text="${t.duration}"></th>
+	        <th th:text="${t.assigne}"></th>
+	        <th th:text="${t.status}"></th>
+	        <th>
+				<div class="svg-container">
+						<a th:href="@{/delete(id=${t.id})}" onclick="return confirm('Are you sure, you want to delete it?')">
+							<div class="del-btn-container">
+								<img class="del-btn" th:src="@{/img/delete.svg}" alt="Delete" />
+							</div>
+						</a>
+						
+						<div class="line-icon-container"><img class="line-icon" th:src="@{/img/line.svg}" alt="" /></div>
+					
+						<a th:href="@{/update(id=${t.id})}" th:id="${t.id}+ 'updbtn'" onclick="return confirm('Are you sure, you want to update it?')">
+							<div class="upd-btn-container">
+								<img class="upd-btn" th:src="@{/img/pen.svg}" alt="Update" />
+							</div>
+						</a>
+				</div>
+			</th>
+		</tr>
+		
+		
+	</tbody>
+  </table>
+  
+  
+  
+  
+	  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+</body>
+</html>
